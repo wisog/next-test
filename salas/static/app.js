@@ -141,8 +141,10 @@ const initListeners = function() {
             return res.json();
         })
         .then((res) => {
-            console.log(res);
-        }).catch(error => console.error(error));
+            console.log(res );
+            if (res['non_field_errors'])
+                alert(res['non_field_errors'][0])
+        }).catch(error => console.log(error) );
     });
 }
 
