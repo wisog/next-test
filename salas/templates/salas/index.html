@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Reservaciones </title>
+     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'datepicker/dist/mtr-datepicker.min.css' %}">
+    <link rel="stylesheet" href="{% static 'datepicker/dist/mtr-datepicker.default-theme.min.css' %}">
+
+    <style type="text/css">
+  		.tamanio {
+  			height: 60%;
+  			width: 60%;
+  			padding-top: 10%;
+  			margin-top: 5%;
+    	 }
+    	 .modal { max-height: 100%; max-width: 100% }
+  	</style>
+</head>
+<body>
+    <div id="modal1" class="modal">
+        <div class="modal-content center">
+            <h4>Elije tu usuario</h4>
+            <div id="usersList"></div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <!-- Aqui va la seleccion de salas -->
+                <h3>Elije una sala</h3>
+                <div id="salasOptions"> </div>
+            </div>
+            <div class="col s3">
+                <!-- Aqui va la seleccion de dia/hora -->
+                <h3>Horario Inicio:</h3>
+                <div id="datepicker-inicio"></div>
+            </div>
+            <div class="col s3">
+                <h3>Horario Fin</h3>
+                <div id="datepicker-fin"></div>
+            </div>
+            <div class="col s2">
+                <a class="waves-effect waves-light btn-large" id="reservarBtn" style="margin-top: 50%">Reservar</a>
+            </div>
+        </div>
+        <!-- Aqui va su reservacion actual, si existiera -->
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'datepicker/dist/mtr-datepicker.min.js' %}"></script>
+    <script type="application/javascript">
+
+        window.addEventListener('load',
+            function() {
+                // Pasamos las credenciales al script que hara las peticiones
+                setUserPassword("{{ user }}", "{{ password }}" );
+                start();
+        }, false);
+    </script>
+</body>
+</html>
